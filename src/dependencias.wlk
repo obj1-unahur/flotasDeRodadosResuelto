@@ -42,4 +42,25 @@ class Dependencia {
 	method agregarPedido(pedido) { pedidos.add(pedido) }
 	method quitarPedido(pedido) { pedidos.remove(pedido) }
 	
+	method totalPasajerosEnPedidos() {
+		return pedidos.sum({ pedido => pedido.pasajerosATransportar() })
+	}
+	
+	method pedidosInsatisfechos() {
+		return pedidos.filter({
+			pedido => not self.puedeSatisfacerPedido(pedido) 
+		})
+	}
+	
+	method puedeSatisfacerPedido(pedido) {
+		return flota.any({veh => pedido.loPuedeSatisfacer(veh)})
+	}
 }
+
+
+
+
+
+
+
+

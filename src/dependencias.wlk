@@ -1,9 +1,9 @@
 import vehiculos.*
 
 class Dependencia {
-	var flota = []
+	var flota = []  // vehiculos
 	var property cantEmpleados
-	var pedidos = []
+	var pedidos = []   // pedidos
 	
 	method agregarAFlota(rodado) { flota.add(rodado) }
 	method quitarDeFlota(rodado) { flota.remove(rodado) }
@@ -54,6 +54,16 @@ class Dependencia {
 	
 	method puedeSatisfacerPedido(pedido) {
 		return flota.any({veh => pedido.loPuedeSatisfacer(veh)})
+	}
+	
+	method esColorRechazado(color) {
+		return pedidos.all({
+			pedido => pedido.coloresIncompatibles().contains(color)
+		})
+	}
+	
+	method relajarTodosLosPedidos() {
+		pedidos.forEach({pedido => pedido.relajar()})
 	}
 }
 

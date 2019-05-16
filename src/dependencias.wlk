@@ -3,6 +3,7 @@ import vehiculos.*
 class Dependencia {
 	var flota = []
 	var property cantEmpleados
+	var pedidos = []
 	
 	method agregarAFlota(rodado) { flota.add(rodado) }
 	method quitarDeFlota(rodado) { flota.remove(rodado) }
@@ -32,7 +33,13 @@ class Dependencia {
 	
 	method capacidadTotal() { return flota.sum({rod => rod.capacidad()}) }
 	
-	
-	
 	method esGrande() { return cantEmpleados >= 40 and flota.size() >= 5 }
+	
+	/*
+	 * Manejo de pedidos
+	 */
+	 
+	method agregarPedido(pedido) { pedidos.add(pedido) }
+	method quitarPedido(pedido) { pedidos.remove(pedido) }
+	
 }
